@@ -1,0 +1,29 @@
+name : worflow-multijobs
+on: push
+jobs:
+    build-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+          run: actions/checkout@v4
+
+        - name: install cowsay
+          run:  sudo apt-get install cowsay -y
+
+        - name: Execute cowsay
+          run: cowsay -f dragon "Run with your dragon" >> dragon.txt
+
+        - name: List files
+          run: ls -al
+
+    test-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: check file exists
+          run: grep -i "dragon" dragon.txt
+          
+    deploy-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Read file dragon.txt
+          run: cat dragon.txt
