@@ -1,0 +1,13 @@
+name: ascii workflow using shell
+on: push
+jobs:
+    ascii-job-shell:
+        runs-on: ubuntu-latest
+        steps:
+        - name: checkout
+          uses: actions/checkout@v4
+
+        - name: Execute shell script for cowsay
+          run: |
+            chmod +x ascii-generate.sh
+            ./ascii-generate.sh
