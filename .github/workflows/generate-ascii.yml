@@ -1,0 +1,20 @@
+name: ascii workflow
+on: push
+jobs:
+    ascii-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: checkout
+          uses: actions/checkout@v4
+
+        - name: install cowsay
+          run: sudo apt-get install cowsay -y
+        
+        - name: Execute cowsay
+          run: cowsay -f dog "Run with your dog" >> dog.txt
+        
+        - name: check files and print outour
+          run: |
+            grep -i "dog" >> dog.txt
+            cat dog.txt
+            ls -al
