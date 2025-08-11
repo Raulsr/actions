@@ -11,10 +11,10 @@ jobs:
           run: sudo apt-get install cowsay -y
         
         - name: Execute cowsay
-          run: cowsay -f dog "Run with your dog" >> dog.txt
+          run: cowsay -f dragon "Run with your dragon" >> dragon.txt
         
-        - name: check files and print outour
+        - name: check files and print outout
           run: |
-            grep -i "dog" >> dog.txt
-            cat dog.txt
+            grep -i "dragon" >> dragon.txt
+            cat dragon.txt
             ls -al
