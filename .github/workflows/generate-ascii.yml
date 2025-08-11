@@ -15,6 +15,6 @@ jobs:
         
         - name: check files and print outout
           run: |
-            grep -i "dragon" >> dragon.txt
+            grep -i "dragon" dragon.txt
             cat dragon.txt
             ls -al
