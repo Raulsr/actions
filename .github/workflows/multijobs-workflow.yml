@@ -5,7 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout
-          run: actions/checkout@v4
+          uses: actions/checkout@v4
 
         - name: install cowsay
           run:  sudo apt-get install cowsay -y
@@ -17,12 +17,14 @@ jobs:
           run: ls -al
 
     test-job:
+        needs: build-job
         runs-on: ubuntu-latest
         steps:
         - name: check file exists
           run: grep -i "dragon" dragon.txt
-          
+
     deploy-job:
+        needs: test-job
         runs-on: ubuntu-latest
         steps:
         - name: Read file dragon.txt
