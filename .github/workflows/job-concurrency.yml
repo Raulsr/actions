@@ -1,4 +1,4 @@
-name: concurrency workflow
+name: concurrency and timeout workflow
 on: workflow_dispatch
 env:
     CONTAINER_REGISTRY: docker.io
@@ -23,7 +23,7 @@ jobs:
           cancel-in-progress: false
         runs-on: ubuntu-latest
         steps:
-        - name: Docker run
+        - name: Docker deploy
           timeout-minutes: 1
           run: |
             echo docker run -d -p 8080:80 $CONTAINER_REGISTRY/${{vars.DOCKER_USERNAME}}/$IMAGE_NAME:latest
