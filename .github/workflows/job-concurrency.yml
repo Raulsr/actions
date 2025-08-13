@@ -24,6 +24,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Docker run
+          timeout-minutes: 1
           run: |
             echo docker run -d -p 8080:80 $CONTAINER_REGISTRY/${{vars.DOCKER_USERNAME}}/$IMAGE_NAME:latest
-            sleep 2000s
+            for ((i=0; i<=120; i+=5)); do
+              echo "$i seconds passed"
+              sleep 5
+            done
