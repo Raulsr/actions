@@ -1,22 +1,15 @@
 name: matrix-workflow
-
 on: workflow_dispatch
 
 jobs:
-    docker-ubuntu-job:
-        runs-on: ubuntu-latest
+    deploy-on-multiple-os:
+        strategy:
+          matrix:
+            os: [ubuntu-latest,ubuntu-20.4,windows-latest]
+            image: [hello-world]
+        runs-on: ${{matrix.os}}
         steps:
-        - name: Docker info
+        - name: Docker info on ${{matrix.os}}
           run: docker info
-        - name : Docker run hello world image
-          run: docker run hello-world
-
-    docker-windows-job:
-        runs-on : windows-latest
-        steps:
-        - name: Docker info
-          run: docker info
-        - name : Docker run hello world image
-          run: docker run hello-world
-
-
+        - name : Docker run image ${{matrix.image}}
+          run: docker run ${{matrix.image}}
