@@ -1,0 +1,22 @@
+name: matrix-workflow
+
+on: workflow_dispatch
+
+jobs:
+    docker-ubuntu-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Docker info
+          run: docker info
+        - name : Docker run hello world image
+          run: docker run hello-world
+
+    docker-windows-job:
+        runs-on : windows-latest
+        steps:
+        - name: Docker info
+          run: docker info
+        - name : Docker run hello world image
+          run: docker run hello-world
+
+
