@@ -4,8 +4,7 @@ on:
   push:
     branches:
         - main
-    branches-ignore:
-        - feature/**
+        - '!feature/*'
 jobs:
   hello:
     runs-on: ubuntu-latest
