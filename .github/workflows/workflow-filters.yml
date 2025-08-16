@@ -20,4 +20,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Trigger workflow on event
-      run: echo job was triggered bcs of event ${{github.event}}
+      run: echo job was triggered bcs of event ${{github.event_name}}
